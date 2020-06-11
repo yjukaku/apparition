@@ -425,7 +425,7 @@ module Capybara::Apparition
     end
 
     def register_event_handlers
-      @session.on 'Page.javascriptDialogOpening' do |type:, message:, has_browser_handler:, **params|
+      @session.on 'Page.javascriptDialogOpening' do |type:, message:, has_browser_handler: false, **params|
         type = type.to_sym
         accept = accept_modal?(type, message: message, manual: has_browser_handler)
         next if accept.nil?
